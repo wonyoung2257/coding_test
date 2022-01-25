@@ -7,8 +7,8 @@ function solution(s) {
     let tempStr = s.substr(0, i);
     let len = 0;
 
-    for (len = i; len <= s.length; len += i) {
-      let nextStr = s.substr(len, i);
+    for (idx = i; idx <= s.length; idx += i) {
+      let nextStr = s.substr(idx, i);
 
       if (tempStr === nextStr) {
         cnt += 1;
