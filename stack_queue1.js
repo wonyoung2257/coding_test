@@ -1,23 +1,23 @@
 function solution(progresses, speeds) {
   let answer = [];
-  let obj = [];
-  let day = 1;
+  let arr = [];
+  let cnt = 1;
   let temp;
 
   progresses.map((el, i) => {
-    obj[i] = Math.ceil((100 - el) / speeds[i]);
+    arr[i] = Math.ceil((100 - el) / speeds[i]);
   });
-  temp = obj[0];
-  for (let i = 1; i < obj.length; i++) {
-    if (temp >= obj[i]) {
-      day += 1;
+  temp = arr[0];
+  for (let i = 1; i < arr.length; i++) {
+    if (temp >= arr[i]) {
+      cnt += 1;
     } else {
-      answer.push(day);
-      day = 1;
-      temp = obj[i];
+      answer.push(cnt);
+      cnt = 1;
+      temp = arr[i];
     }
   }
-  answer.push(day);
+  answer.push(cnt);
 
   return answer;
 }
