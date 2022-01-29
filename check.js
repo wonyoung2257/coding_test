@@ -10,9 +10,10 @@ function solution(places) {
   while (true) {
     let index = 0;
     place = places[index].map((el) => el.split(""));
-    for (let i = 0; i < 6; i++) {
-      for (let k = 0; k < 6; k++) {
-        place[i][k];
+    console.log(place[0][0]);
+    for (let i = 0; i < 5; i++) {
+      for (let k = 0; k < 5; k++) {
+        console.log(place[i][k]);
       }
     }
     return;
