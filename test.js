@@ -1,13 +1,28 @@
-function combination(arr, num) {
-  const result = [];
-  if (num === 1) return arr.map((v) => [v]);
+const fs = require("fs");
+let input = fs.readFileSync("/dev/stdin").toString();
+input = input.split("\n");
 
-  arr.forEach((el, idx, array) => {
-    const fix = el;
-    const restArray = array.slice(idx + 1);
-    const combiArr = combination(restArray, num - 1);
-    const tempArr = combiArr.map((el) => [fix, ...el]);
-    result.push(...tempArr);
-  });
-  return result;
+const inputC = +input[0];
+const inputTestCase = [];
+
+for (let i = 1; i <= inputC; ++i) {
+  const arr = input[i].split(" ").map((item) => +item);
+  let newArr = [];
+  for (let j = 1; j < arr.length; j++) {
+    newArr.push(arr[j]);
+  }
+  const testCase = {
+    N: arr[0],
+    arr: newArr,
+  };
+  inputTestCase.push(testCase);
+}
+
+solution(inputC, inputTestCase);
+
+function solution(C, inputTestCase) {
+  /**
+   * 문제 풀이
+   */
+  console.log("정답출력");
 }

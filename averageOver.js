@@ -6,9 +6,9 @@ const inputTestCase = [];
 
 for (let i = 1; i <= inputC; ++i) {
   const arr = input[i].split(" ").map((item) => +item);
-
+  console.log(arr);
   let newArr = [];
-  for (let j = 1; j < arr.length; ++j) {
+  for (let j = 1; j < arr.length; j++) {
     newArr.push(arr[j]);
   }
   const testCase = {
