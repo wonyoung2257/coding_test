@@ -1,16 +1,12 @@
-# r = 31
-# M = 1234567891
-import sys
+S = 0
 
-sys.stdin = open('input_py.txt', "r")
+# num =3
 
-n = input()
-m = input()
-total = 0
-r = 1
-for i in m:
-  num = ord(i) - 96
-  total += num * r
-  r *=31
-
-print(total % 1234567891)
+# S |= (1<<num)
+# S |= (1<<num)
+# S ^= (1<<num)
+S |= (1<<21) -1
+print(bin(S & (1<<20)))
+# S ^= (1<<4)
+# print(bin(S))
+# print(bin(S& (1<<2)) == bin(0))

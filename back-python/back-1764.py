@@ -6,15 +6,10 @@ import sys
 sys.stdin = open("input_py.txt", "r")
 
 N, M = map(int, sys.stdin.readline().split())
-arr = []
-for i in range(N):
-  arr.append(sys.stdin.readline().strip())
+N_arr = [sys.stdin.readline().strip() for _ in range(N)]
+M_arr= [sys.stdin.readline().strip() for _ in range(M)]
 
-result = []
-for i in range(M):
-  name = sys.stdin.readline().strip()
-  if name in arr:
-    result.append(name)
-
-result = sorted(result)
-print(*result)
+result = list(set(N_arr) & set(M_arr))
+print(len(result))
+for name in sorted(result):
+  print(name)
