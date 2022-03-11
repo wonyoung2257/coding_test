@@ -1,16 +1,14 @@
 def solution(number, k):
-    answer = ''
-    numArr = list(map(int, number))
-    long = len(number) - k
-    i= 0
-    while len(answer) != len(number) - k:
-      maxNum = max(numArr[0:len(numArr)-long])
-      numArr = numArr[numArr.index(maxNum)+1:]
-      
-      answer += str(maxNum)
-      long -=1
-    print(answer)
+  answer = []
+  
+  for num in number:
+    while answer and k >0 and answer[-1] <num:
+      answer.pop()
+      k-= 1
 
-    return answer
+    answer.append(num)
+  
+  print(''.join(answer[:len(number)-k]))
+  return ''.join(answer)
 
-solution("1231234", 3)
+solution("654321", 5)
