@@ -5,35 +5,33 @@ sys.stdin = open("input_py.txt", "r")
 input = sys.stdin.readline
 
 n, k = map(int, input().split(' '))
-graph = [] # 전체 보드 정보
-data = [] # 바이러스 정보
+graph = [list(map(int, input().split(' '))) for _ in range(n)]
 
+t_s, t_x, t_y = map(int, input().split(' '))
+
+virus = []
 for i in range(n):
-  graph.append(list(map(int, input().split())))
   for j in range(n):
     if graph[i][j] != 0:
-      # 바이러스 종류, 시간, 위치x, 위치y
-      data.append((graph[i][j], 0, i ,j))
-
-s, x, y = map(int, input().split(' '))
+      virus.append((graph[i][j],0,i,j))
 
 dx = [1, -1, 0, 0]
 dy = [0, 0, 1, -1]
-data.sort()
-q = deque(data)
+# 숫자가 낮은 바이러스 부터 실시
+virus.sort()
+q = deque(virus)
 
 while q:
-  virus, time, nowX, nowY = q.popleft()
-
-  if time == s:
+  v_num, s, x, y = q.popleft()
+  if s == t_s:
     break
+  
   for i in range(4):
-    nx = nowX + dx[i]
-    ny = nowY + dy[i]
+    nx = x+dx[i]
+    ny = y+dy[i]
+    if 0<= nx < n and 0<= ny < n:
+      if graph[nx][ny] ==0:
+        graph[nx][ny] = v_num
+        q.append((v_num,s+1,nx,ny))
 
-    if 0<= nx <n and 0 <= ny < n:
-      if graph[nx][ny] == 0:
-        graph[nx][ny] = virus
-        q.append((virus, s+1, nx,ny))
-
-print(graph[x-1][y-1])
+print(graph[t_x-1][t_y-1])
