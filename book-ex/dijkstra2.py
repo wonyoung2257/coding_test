@@ -23,7 +23,10 @@ def dijkstra(start):
   distance[start] = 0
   while q:
     dist, now = heapq.heappop(q)
+    
     # 현재 노드가 이미 처리된 적이 있는 노드라면 무시
+    # 우선순위 큐에서 이미 처리된 노드가 우선 순위에 밀려 늦게 나올 수 있다.
+    # 이때 우선 순위에 밀려서 늦게 나온 요소의 거리가 기존 저장된 거리보다 크면 continue한다
     if distance[now] < dist:
       continue
 
